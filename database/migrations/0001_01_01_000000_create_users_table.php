@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('name')->unique();      // le pseudo, doit être unique pour servir d'identifiant
+            $table->string('email')->nullable();    // on garde le champ mais il devient optionnel
+            $table->date('date_of_birth')->nullable();
+            $table->string('country')->nullable();
+            $table->boolean('is_owner')->default(false);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
